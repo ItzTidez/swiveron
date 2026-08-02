@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiveron — one hotkey, whole desktop reconfigures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0E10;
+    --panel:#12171A;
+    --panel-raised:#161D20;
+    --border:#1F2A2D;
+    --text:#E7F0F0;
+    --muted:#7C8A8D;
+    --cyan:#22E1D0;
+    --cyan-dim:#15837A;
+    --amber:#FFB454;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(11,14,16,0.85);backdrop-filter:blur(8px);z-index:10;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;}
+  .brand .dot{width:9px;height:9px;border-radius:2px;background:var(--cyan);box-shadow:0 0 12px var(--cyan);}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted);}
+  .nav-links a{text-decoration:none;transition:color .15s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{background:var(--cyan);color:#04211F;padding:9px 16px;border-radius:6px;font-weight:600;font-size:13.5px;text-decoration:none;}
+
+  .hero{padding:88px 0 64px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--cyan);letter-spacing:.06em;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .eyebrow::before{content:'';width:16px;height:1px;background:var(--cyan);}
+  h1{font-size:52px;line-height:1.08;font-weight:700;margin:0 0 20px;max-width:760px;letter-spacing:-0.01em;}
+  h1 .accent{color:var(--cyan);}
+  .sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.6;margin:0 0 34px;}
+  .hero-ctas{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+  .btn-primary{background:var(--cyan);color:#04211F;padding:13px 22px;border-radius:6px;font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+  .btn-secondary{border:1px solid var(--border);color:var(--text);padding:13px 22px;border-radius:6px;font-weight:500;font-size:14.5px;text-decoration:none;}
+  .btn-secondary:hover{border-color:var(--cyan-dim);}
+  .req-note{font-size:12.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+  .icon-mark{display:flex;align-items:center;justify-content:center;margin:0 0 40px;}
+  .icon-mark svg{filter:drop-shadow(0 0 30px rgba(34,225,208,0.15));}
+
+  section{padding:72px 0;border-bottom:1px solid var(--border);border-top:1px solid var(--border);}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:.06em;margin-bottom:10px;}
+  h2{font-size:30px;margin:0 0 14px;font-weight:600;}
+  .section-sub{color:var(--muted);font-size:15px;max-width:520px;line-height:1.6;margin-bottom:44px;}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .feature-card{border:1px solid var(--border);border-radius:10px;padding:22px;background:var(--panel);}
+  .feature-card .dot{width:8px;height:8px;border-radius:2px;margin-bottom:14px;}
+  .feature-card h3{font-size:16px;margin:0 0 8px;font-weight:600;}
+  .feature-card p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0;}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{text-align:left;color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:0 0 12px;border-bottom:1px solid var(--border);}
+  td{padding:14px 0;border-bottom:1px solid var(--border);}
+  .kbd{font-family:'JetBrains Mono',monospace;background:var(--panel-raised);border:1px solid var(--border);border-bottom-width:2px;padding:4px 9px;border-radius:5px;font-size:12.5px;color:var(--amber);}
+
+  .download{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;border:1px solid var(--border);border-radius:12px;padding:36px;background:var(--panel);}
+  .download h3{font-size:20px;margin:0 0 8px;}
+  .download p{color:var(--muted);font-size:13.5px;margin:0;max-width:420px;}
+  .req-list{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap;}
+  .req{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);border:1px solid var(--border);padding:5px 10px;border-radius:5px;}
+
+  footer{padding:32px 0;text-align:center;color:var(--muted);font-size:13px;}
+
+  @media (max-width:820px){
+    h1{font-size:36px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .download{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="dot"></span> Swiveron</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#hotkeys">Hotkeys</a>
+  </div>
+  <a class="nav-cta" href="#download">Download</a>
+</nav>
+
+<div class="wrap">
+  <section class="hero" style="border:none;">
+    <div class="eyebrow">TRAY APP · WINDOWS</div>
+    <h1>One hotkey.<br>Your whole <span class="accent">desktop</span> reconfigures.</h1>
+    <p class="sub">Swiveron swaps your apps, audio devices, monitor layout, and lighting all at once - moving between different setups takes one keypress instead of ten.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#download">Download for Windows</a>
+      <a class="btn-secondary" href="#features">See what it does</a>
+    </div>
+    <div class="req-note">Free · No account needed</div>
+  </section>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="kicker">WHAT IT SWITCHES</div>
+    <h2>Every profile can control</h2>
+    <p class="section-sub">Set up as many profiles as you want. Each one can touch any combination of the below, skip what you don't need.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="dot" style="background:var(--cyan);"></div>
+        <h3>Apps</h3>
+        <p>Launch programs, shortcuts, or URLs and close apps you don't want running all in one switch.</p>
+      </div>
+      <div class="feature-card">
+        <div class="dot" style="background:var(--amber);"></div>
+        <h3>Audio</h3>
+        <p>Switch both your default playback device and your microphone, independently per profile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="dot" style="background:#8B7CF6;"></div>
+        <h3>Monitors</h3>
+        <p>Extend, clone, or drop to a single display automatically when you switch contexts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="dot" style="background:var(--cyan);"></div>
+        <h3>Lighting</h3>
+        <p>Push a color to your OpenRGB-controlled devices (keyboard, GPU, case fans) per profile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="dot" style="background:var(--amber);"></div>
+        <h3>Hotkeys</h3>
+        <p>Every profile gets its own global hotkey, remappable any time, live, no restart needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="dot" style="background:#8B7CF6;"></div>
+        <h3>Quiet mode</h3>
+        <p>Flag a profile to signal it should stay quiet, useful for recording or focus sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hotkeys">
+  <div class="wrap">
+    <div class="kicker">HOW IT WORKS</div>
+    <h2>Set it up once, switch forever</h2>
+    <table>
+      <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Create a profile</td><td>Name it, pick your apps, devices, and hotkey right from the app's UI</td></tr>
+        <tr><td>Assign a hotkey</td><td>e.g. <span class="kbd">Ctrl</span>+<span class="kbd">Alt</span>+<span class="kbd">1</span> or trigger it manually with Apply Now</td></tr>
+        <tr><td>Press it</td><td>Everything switches at once, anywhere in Windows - no need to have the app focused</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="download" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="kicker">GET IT</div>
+    <h2 style="margin-bottom:32px;">Download Swiveron</h2>
+    <div class="download">
+      <div>
+        <h3>SwiveronSetup.exe</h3>
+        <p>Self-contained installer - nothing else to install first. Runs on any 64-bit Windows 10/11 machine.</p>
+        <div class="req-list">
+          <span class="req">Windows 10/11 64-bit</span>
+          <span class="req">Optional: OpenRGB for lighting</span>
+        </div>
+      </div>
+      <a class="btn-primary" href="https://github.com/ItzTidez/swiveron/releases/download/v1.0.0/SwiveronSetup.exe">Download v1.0.0</a>
+    </div>
+  </div>
+</section>
+
+<footer>Swiveron - a small tray app that changes your whole environment</footer>
+
+</body>
+</html>
