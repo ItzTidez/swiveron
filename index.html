@@ -1,112 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swiveron — one hotkey, whole desktop reconfigures</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="icon" href="favicon.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiveron</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
 
-<nav>
-  <div class="brand"><span class="dot"></span> Swiveron</div>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#hotkeys">Hotkeys</a>
-  </div>
-  <a class="nav-cta" href="#download">Download</a>
-</nav>
+    <nav>
+      <div class="brand"><span class="dot"></span> Swiveron</div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#hotkeys">Hotkeys</a>
+      </div>
+      <a class="nav-cta" href="/downloads/index.html#download">Download</a>
+    </nav>
 
-<div class="wrap">
-  <section class="hero" style="border:none;">
-    <div class="eyebrow">TRAY APP · WINDOWS</div>
-    <h1>One hotkey.<br>Your whole <span class="accent">desktop</span> reconfigures.</h1>
-    <p class="sub">Swiveron swaps your apps, audio devices, monitor layout, and lighting all at once - moving between different setups takes one keypress instead of ten.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="#download">Download for Windows</a>
-      <a class="btn-secondary" href="#features">See what it does</a>
+    <div class="wrap">
+      <section class="hero" style="border:none;">
+        <div class="eyebrow">TRAY APP · WINDOWS</div>
+        <h1>One hotkey.<br>Your whole <span class="accent">desktop</span> reconfigures.</h1>
+        <p class="sub">Swiveron swaps your apps, audio devices, monitor layout, and lighting all at once - moving between different setups takes one keypress instead of ten.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#download">Download for Windows</a>
+          <a class="btn-secondary" href="#features">See what it does</a>
+        </div>
+        <div class="req-note">Free · No account needed · No telemetry · Runs locally</div>
+      </section>
     </div>
-    <div class="req-note">Free · No account needed · No telemetry · Runs locally</div>
-  </section>
-</div>
 
-<section id="features">
-  <div class="wrap">
-    <div class="kicker">WHAT IT SWITCHES</div>
-    <h2>Every profile can control</h2>
-    <p class="section-sub">Set up as many profiles as you want. Each one can touch any combination of the below, skip what you don't need.</p>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="dot" style="background:var(--cyan);"></div>
-        <h3>Apps</h3>
-        <p>Launch programs, shortcuts, or URLs and close apps you don't want running all in one switch.</p>
-      </div>
-      <div class="feature-card">
-        <div class="dot" style="background:var(--amber);"></div>
-        <h3>Audio</h3>
-        <p>Switch both your default playback device and your microphone, independently per profile.</p>
-      </div>
-      <div class="feature-card">
-        <div class="dot" style="background:#8B7CF6;"></div>
-        <h3>Monitors</h3>
-        <p>Extend, clone, or drop to a single display automatically when you switch contexts.</p>
-      </div>
-      <div class="feature-card">
-        <div class="dot" style="background:var(--cyan);"></div>
-        <h3>Lighting</h3>
-        <p>Push a color to your OpenRGB-controlled devices (keyboard, GPU, case fans) per profile.</p>
-      </div>
-      <div class="feature-card">
-        <div class="dot" style="background:var(--amber);"></div>
-        <h3>Hotkeys</h3>
-        <p>Every profile gets its own global hotkey, remappable any time, live, no restart needed.</p>
-      </div>
-      <div class="feature-card">
-        <div class="dot" style="background:#8B7CF6;"></div>
-        <h3>Quiet mode</h3>
-        <p>Flag a profile to signal it should stay quiet, without notifications. Useful for recording or focus sessions.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="hotkeys">
-  <div class="wrap">
-    <div class="kicker">HOW IT WORKS</div>
-    <h2>Set it up once, switch forever</h2>
-    <table>
-      <thead><tr><th>Step</th><th>What happens</th></tr></thead>
-      <tbody>
-        <tr><td>Create a profile</td><td>Name it, pick your apps, devices, and hotkey right from the app's UI</td></tr>
-        <tr><td>Assign a hotkey</td><td>e.g. <span class="kbd">Ctrl</span>+<span class="kbd">Alt</span>+<span class="kbd">1</span> or trigger it manually with Apply Now</td></tr>
-        <tr><td>Press it</td><td>Everything switches at once, anywhere in Windows - no need to have the app focused</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="download" style="border-bottom:none;">
-  <div class="wrap">
-    <div class="kicker">GET IT</div>
-    <h2 style="margin-bottom:32px;">Download Swiveron</h2>
-    <div class="download">
-      <div>
-        <h3>Latest release</h3>
-        <p>Self-contained installer - nothing else to install first. Runs on any 64-bit Windows 10/11 machine.</p>
-        <div class="req-list">
-          <span class="req">Windows 10/11 64-bit</span>
-          <span class="req">Optional: OpenRGB for lighting</span>
+    <section id="features">
+      <div class="wrap">
+        <div class="kicker">WHAT IT SWITCHES</div>
+        <h2>Every profile can control</h2>
+        <p class="section-sub">Set up as many profiles as you want. Each one can touch any combination of the below, skip what you don't need.</p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="dot" style="background:var(--cyan);"></div>
+            <h3>Apps</h3>
+            <p>Launch programs, shortcuts, or URLs and close apps you don't want running all in one switch.</p>
+          </div>
+          <div class="feature-card">
+            <div class="dot" style="background:var(--amber);"></div>
+            <h3>Audio</h3>
+            <p>Switch both your default playback device and your microphone, independently per profile.</p>
+          </div>
+          <div class="feature-card">
+            <div class="dot" style="background:#8B7CF6;"></div>
+            <h3>Monitors</h3>
+            <p>Extend, clone, or drop to a single display automatically when you switch contexts.</p>
+          </div>
+          <div class="feature-card">
+            <div class="dot" style="background:var(--cyan);"></div>
+            <h3>Lighting</h3>
+            <p>Push a color to your OpenRGB-controlled devices (keyboard, GPU, case fans) per profile.</p>
+          </div>
+          <div class="feature-card">
+            <div class="dot" style="background:var(--amber);"></div>
+            <h3>Hotkeys</h3>
+            <p>Every profile gets its own global hotkey, remappable any time, live, no restart needed.</p>
+          </div>
+          <div class="feature-card">
+            <div class="dot" style="background:#8B7CF6;"></div>
+            <h3>Quiet mode</h3>
+            <p>Flag a profile to signal it should stay quiet, without notifications. Useful for recording or focus sessions.</p>
+          </div>
         </div>
       </div>
-      <a class="btn-primary" href="https://github.com/ItzTidez/swiveron/releases/latest/download/SwiveronSetup.exe">Download for Windows</a>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>Swiveron - a small tray app that changes your whole environment</footer>
+    <section id="hotkeys" style="border-bottom:none;">
+      <div class="wrap">
+        <div class="kicker">HOW IT WORKS</div>
+        <h2>Set it up once, switch forever</h2>
+        <table>
+          <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td>Create a profile</td><td>Name it, pick your apps, devices, and hotkey right from the app's UI</td></tr>
+            <tr><td>Assign a hotkey</td><td>e.g. <span class="kbd">Ctrl</span>+<span class="kbd">Alt</span>+<span class="kbd">1</span> or trigger it manually with Apply Now</td></tr>
+            <tr><td>Press it</td><td>Everything switches at once, anywhere in Windows - no need to have the app focused</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-</body>
+    <footer>
+      <div class="wrap footer-inner">
+        <span>© 2026 Swiveron</span>
+        <div class="footer-links">
+          <a href="https://github.com/ItzTidez/swiveron">GitHub</a>
+          <a href="https://github.com/ItzTidez/swiveron/releases">Releases</a>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>
